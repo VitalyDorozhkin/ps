@@ -59,6 +59,7 @@ int		main(int argc, char **argv)
 	t_list	*lst_a;
 	t_list	*lst_b;
 
+	lst_b = NULL;
 	c = 0;
 	read_flags_v(&argc, &argv, &c);
 	read_flags_f(&argc, &argv);
@@ -68,13 +69,14 @@ int		main(int argc, char **argv)
 		if (!check_comand(comand, &lst_a, &lst_b) ||
 			visualise(comand, lst_a, lst_b, c))
 			print_message("Error");
-	if (lst_b || !lst_a)
+	if (lst_b)
 		print_message("KO");
-	while (lst_a->next)
+		lst_b = lst_a;
+	while (lst_b->next)
 	{
-		if (lst_a->content_size >= lst_a->next->content_size)
+		if (lst_b->content_size >= lst_b->next->content_size)
 			print_message("KO");
-		lst_a = lst_a->next;
+		lst_b = lst_b->next;
 	}
 	ft_printf("OK");
 	exit(0);
