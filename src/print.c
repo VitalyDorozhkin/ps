@@ -48,7 +48,7 @@ void	ft_print_border(int c, int flag, char *cmd)
 	while (i++ <= c / 2)
 		ft_putchar('-');
 	if (cmd)
-		ft_printf(" %*s", 3, cmd);
+		ft_printf("\x1B[35m%*s\x1B[37m", 3, cmd);
 	ft_putchar('\n');
 }
 
