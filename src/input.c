@@ -94,7 +94,7 @@ t_list		*set_list(int argc, char **argv)
 	{
 		tmp = ft_strsplit(argv[i], ' ');
 		while (ft_strlen(argv[i]) && tmp[++j])
-				set_el(&(tmp[j]), &lst_a_tmp);
+			set_el(&(tmp[j]), &lst_a_tmp);
 		ft_memdel((void **)&tmp);
 	}
 	ft_memdel((void **)&lst_a_tmp);

@@ -40,22 +40,6 @@ void	quick_sort(t_list **lst_a, t_list **lst_b)
 	}
 }
 
-void	read_flags_a(int *argc, char ***argv)
-{
-	int		fd;
-	char	*line;
-
-	if ((*argv)[1][0] == '-' && (*argv)[1][1] == 'f')
-	{
-		fd = open((*argv)[2], O_RDONLY);
-		get_next_line(fd, &line);
-		(*argv)[2] = line;
-		(*argv)++;
-		(*argc)--;
-		close(fd);
-	}
-}
-
 int		main(int argc, char **argv)
 {
 	t_list	*lst_a;
@@ -64,7 +48,7 @@ int		main(int argc, char **argv)
 	lst_b = NULL;
 	if (argc == 1)
 		exit(0);
-	read_flags_a(&argc, &argv);
+	read_flags_f(&argc, &argv);
 	lst_a = set_list(argc, argv);
 	is_dub(lst_a);
 	is_sort(lst_a);

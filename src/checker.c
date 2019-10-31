@@ -23,7 +23,7 @@ int		visualise(char *comand, t_list *lst_a, t_list *lst_b, int c)
 	return (0);
 }
 
-int	frre(char **str)
+int		frre(char **str)
 {
 	free(*str);
 	return (1);
@@ -75,8 +75,7 @@ int		main(int argc, char **argv)
 		if (!check_comand(&comand, &lst_a, &lst_b) ||
 			visualise(comand, lst_a, lst_b, c))
 			print_message("Error");
-	if (lst_b)
-		print_message("KO");
+	(lst_b) ? print_message("KO") : (void)0;
 	lst_b = lst_a;
 	while (lst_b->next)
 	{
@@ -84,8 +83,6 @@ int		main(int argc, char **argv)
 			print_message("KO");
 		lst_b = lst_b->next;
 	}
-	ft_printf("OK\n");
 	ft_lstfree(&lst_a);
-	free(lst_a);
-	exit(0);
+	print_message("OK");
 }

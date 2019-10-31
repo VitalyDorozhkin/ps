@@ -61,7 +61,7 @@ int				get_next_line(const int fd, char **line)
 	t_list			*lst;
 	int				size;
 
-	if (!line || fd < 0 || BUFF_SIZE < 1)
+	if (!line || fd < 0 || BUFF_SIZE < 1 || read(fd, NULL, 0) == -1)
 		return (-1);
 	lst = get_fd(&lst_save, fd);
 	size = 0;

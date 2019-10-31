@@ -14,7 +14,6 @@
 
 void	read_flags_v(int *argc, char ***argv, int *c)
 {
-	
 	if (*argc > 1 && (*argv)[1][0] == '-')
 	{
 		if ((*argv)[1][1] == 'v')
@@ -38,7 +37,8 @@ void	read_flags_f(int *argc, char ***argv)
 	if ((*argv)[1][0] == '-' && (*argv)[1][1] == 'f')
 	{
 		fd = open((*argv)[2], O_RDONLY);
-		get_next_line(fd, &line);
+		if (get_next_line(fd, &line) == -1)
+			print_message("Error");
 		(*argv)[2] = line;
 		(*argv)++;
 		(*argc)--;
