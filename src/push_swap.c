@@ -40,21 +40,6 @@ void	quick_sort(t_list **lst_a, t_list **lst_b)
 	}
 }
 
-void	ft_lstfree(t_list **alst)
-{
-	t_list	*tmp;
-	t_list	*next;
-
-	tmp = *alst;
-	while (tmp && alst)
-	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
-	}
-	*alst = NULL;
-}
-
 void	read_flags_a(int *argc, char ***argv)
 {
 	int		fd;

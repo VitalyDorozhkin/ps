@@ -52,5 +52,5 @@ int		get_max_len(t_list *lst);
 
 void	read_flags_v(int *argc, char ***argv, int *c);
 void	read_flags_f(int *argc, char ***argv);
-
+void	ft_lstfree(t_list **alst);
 #endif

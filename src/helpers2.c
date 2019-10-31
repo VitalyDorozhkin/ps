@@ -14,9 +14,8 @@
 
 void	read_flags_v(int *argc, char ***argv, int *c)
 {
-	if (*argc == 1)
-		exit(0);
-	if ((*argv)[1][0] == '-')
+	
+	if (*argc > 1 && (*argv)[1][0] == '-')
 	{
 		if ((*argv)[1][1] == 'v')
 		{
@@ -27,6 +26,8 @@ void	read_flags_v(int *argc, char ***argv, int *c)
 			(*argv)++;
 		}
 	}
+	if (*argc == 1)
+		exit(0);
 }
 
 void	read_flags_f(int *argc, char ***argv)
@@ -43,4 +44,21 @@ void	read_flags_f(int *argc, char ***argv)
 		(*argc)--;
 		close(fd);
 	}
+	if (*argc == 1)
+		exit(0);
+}
+
+void	ft_lstfree(t_list **alst)
+{
+	t_list	*tmp;
+	t_list	*next;
+
+	tmp = *alst;
+	while (tmp && alst)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	*alst = NULL;
 }

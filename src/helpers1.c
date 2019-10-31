@@ -14,7 +14,7 @@
 
 void	print_message(char *str)
 {
-	ft_printf("%s", str);
+	ft_printf("%s\n", str);
 	exit(0);
 }
 

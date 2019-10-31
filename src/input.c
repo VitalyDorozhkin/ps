@@ -90,15 +90,16 @@ t_list		*set_list(int argc, char **argv)
 	lst_a = (t_list *)ft_memalloc(sizeof(*lst_a));
 	lst_a_tmp = lst_a;
 	i = 0;
-	while (++i < argc)
+	while (++i < argc && (j = -1))
 	{
-		j = -1;
 		tmp = ft_strsplit(argv[i], ' ');
-		while (tmp[++j])
-			set_el(&(tmp[j]), &lst_a_tmp);
-		free(tmp);
+		while (ft_strlen(argv[i]) && tmp[++j])
+				set_el(&(tmp[j]), &lst_a_tmp);
+		ft_memdel((void **)&tmp);
 	}
-	free(lst_a_tmp);
+	ft_memdel((void **)&lst_a_tmp);
+	if (!lst_a->next)
+		exit(0);
 	lst_a_tmp = lst_a;
 	while (lst_a_tmp && lst_a_tmp->next && lst_a_tmp->next->next)
 		lst_a_tmp = lst_a_tmp->next;
